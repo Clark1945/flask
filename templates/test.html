@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Food<br>
+{{list_foods.0}}<br>
+{{list_foods.1}}<br>
+{{list_foods.2}}<br>
+Food<br>
+{% if dict_foods %}
+    {{ dict_foods.food1 }}<br>
+    {{ dict_foods.food2 }}<br>
+    {{ dict_foods.food3 }}<br>
+{% else %}
+    Dictionary is empty.
+{% endif %}
+
+{% if user %}
+    歡迎，{{ user }}!
+{% else %}
+    歡迎，第一次來本站。
+{% endif %}
+
+<ul>
+    {% for item in list_foods %}
+        <li>ITEM = {{ item }}</li>
+    {% endfor %}
+</ul>
+
+{% if list_foods %}
+  <ul>
+    {% for user in list_foods%}
+      <li>{{ user }}</li>
+    {% endfor %}
+  </ul>
+{% endif %}
+</body>
+</html>
