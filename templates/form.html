@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block body %}
+<form method="POST" action="{{url_for('submit')}}">
+<input type="text" class="form-control" name="firstname" placeholder="First name">
+<input type="text" class="form-control" name="lastname" placeholder="Last name">
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

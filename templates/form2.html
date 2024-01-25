@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block body %}
+J個是表單2
+<form method="POST" action="{{url_for('form2')}}">
+<input type="text" class="form-control" name="firstname" placeholder="First name">
+<input type="text" class="form-control" name="lastname" placeholder="Last name">
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
