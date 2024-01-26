@@ -1,16 +1,15 @@
 from flask import Flask, render_template, request, url_for, redirect
 
-app = Flask(__name__)
-
+app = Flask(__name__, static_folder='views/assets/')
 @app.route('/hello/<name>')
 def hello(name):
     return render_template('home.html',name = name)
 @app.route("/hi/<name>")
 def hi(name):
     return render_template("home.html",**locals()) #傳遞所有的參數與區域變數
-@app.route("/<name>")
-def home(name):
-    return f"{name}, Welcome. This is Home Page"
+# @app.route("/<name>")
+# def home(name):
+#     return f"{name}, Welcome. This is Home Page"
 
 @app.route("/greet")
 def greet():
