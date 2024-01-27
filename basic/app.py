@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, url_for, redirect
 
-app = Flask(__name__, static_folder='views/assets/')
+app = Flask(__name__, static_url_path='/imgs',static_folder='views/assets/')
+
 @app.route('/hello/<name>')
 def hello(name):
     return render_template('home.html',name = name)
