@@ -1,0 +1,23 @@
+{% block content %}
+<div class="container">
+<form method="POST"> <!-- form 表單 -->
+  {{form.hidden_tag()}}
+  {{form.name.label(class='form-label')}}
+  {{form.name(class='form-control')}}
+  <br>
+  {{form.agreed.label(class='form-label')}}
+  {{form.agreed(class='form-control')}}
+  <br>
+  {{form.gender.label(class='form-label')}}
+  {{form.gender()}}
+  <br>
+  {{form.hobby.label(class='form-label')}}
+  {{form.hobby(class='form-control')}}
+  <br>
+  {{form.others.label(class='form-label')}}
+  {{form.others(class='form-control')}}
+  <br>
+  {{form.submit(class='btn btn-primary')}}
+</form>
+</div>
+{% endblock %}

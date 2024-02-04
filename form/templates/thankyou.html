@@ -1,0 +1,13 @@
+
+{% block content %}
+<div class="container">
+<p>感謝填寫，以下是您提供的訊息</p>
+<ul>
+<li>名字: {{session['name']}}</li>
+<li>同意加入這個組織: {{session['agreed']}}</li>
+<li>性別: {{session['gender']}}</li>
+<li>興趣: {{session['hobby']}}</li>
+<li>其他: {{session['others']}}</li>
+</ul>
+</div>
+{% endblock %}
