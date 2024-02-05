@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}View All Users{% endblock %}
+{% block body %} 
+<div class="jumbotron jumbotron-fluid mt-5">
+<div class="container">
+<h1 class="display-4">查看所有名單</h1>
+<ul class="list-group">
+{% for item in values%}
+  <li class="list-group-item">
+  <h5 class="mb-1">姓名： {{item.name}}</H5>
+  <p class="mb-1">電子郵件： {{item.email}}</p>
+  </li>
+  {% endfor %}
+</ul>
+</div>
+</div>
+{% endblock %}
