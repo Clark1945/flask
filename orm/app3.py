@@ -1,8 +1,10 @@
 from flask import Flask, render_template, session, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
+import os
+from flask_migrate import Migrate
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///D:/MyFold/Programming_data/sqlite/flask_sample.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # 這個設定如果設置為True後Flask-SQLAlchemy為追蹤各種改變的信號，這樣子會消耗額外的記憶體，官網上建議如果沒有特別需要，可設定為關閉裝態。因此，在這裡我們設定為False。
 db = SQLAlchemy(app)
 
 app.secret_key = "#230dec61-fee8-4ef2-a791-36f9e680c9fc" #不加入會報錯
@@ -14,6 +16,20 @@ class Users(db.Model):
     def __init__(self, name, email):
         self.name =name
         self.email = email
+
+class Players(db.Model):
+    __tablename__ = 'users'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Text)
+    age = db.Column(db.Integer)
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def __repr__(self):
+        return f'使用者名稱為 {self.name} ，年齡為 {self.age} 歲。'
+
 
 
 # 在需要的地方建立所有表格
@@ -52,7 +68,7 @@ def view():
 @app.route("/login", methods=["POST", "GET"])
 def login():
     if request.method == "POST":
-        session.permanent = True
+        session.permanent = True # 瀏覽器關閉後依然保存
         user = request.form["nm"]
         session["user"] = user
 
@@ -69,6 +85,11 @@ def login():
         if "user" in session:
             return redirect(url_for("user"))
         return render_template("login.html")
+
+###
+basedir = os.path.abspath(os.path.dirname(__file__))
+Migrate(app,db)
+
 
 if __name__ =="__main__":
     app.run(debug=True)
