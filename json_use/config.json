@@ -1,0 +1,9 @@
+{
+    "people": [
+        {
+            "name": "Superman",
+            "website": "superman.com",
+            "from": "Mars"
+        }
+    ]
+}
